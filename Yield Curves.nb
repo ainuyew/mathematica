@@ -1,0 +1,392 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframEngine 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       160,          7]
+NotebookDataLength[     14888,        384]
+NotebookOptionsPosition[     13573,        342]
+NotebookOutlinePosition[     13902,        357]
+CellTagsIndexPosition[     13859,        354]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[StyleBox["Yield Curve", "Title"]], "Text",
+ CellChangeTimes->{{3.695095149483802*^9, 3.6950951715247307`*^9}, {
+  3.6950953993040657`*^9, 3.6950954092282133`*^9}, {3.695095478551447*^9, 
+  3.6950954794334917`*^9}, {3.695095761922215*^9, 3.6950957683669567`*^9}, {
+  3.700371020060923*^9, 3.700371023851522*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Dates", "Chapter"]], "Text",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.},
+ CellChangeTimes->{3.70037102157648*^9, 3.7003711815287657`*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  SubscriptBox["D", "today"], ":=", 
+  RowBox[{"DateObject", "[", 
+   RowBox[{"{", 
+    RowBox[{"2016", ",", " ", "7", ",", " ", "1"}], "}"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["D", "overnight"], ":=", 
+  RowBox[{"DayPlus", "[", 
+   RowBox[{
+    SubscriptBox["D", "today"], ",", " ", "1", ",", " ", 
+    "\"\<BusinessDay\>\""}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["D", "tmrnext"], ":=", 
+  RowBox[{"DayPlus", "[", 
+   RowBox[{
+    SubscriptBox["D", "overnight"], ",", " ", "1", ",", " ", 
+    "\"\<BusinessDay\>\""}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["D", "settle"], ":=", 
+  RowBox[{"DayPlus", "[", 
+   RowBox[{
+    SubscriptBox["D", "today"], ",", " ", "2", ",", " ", 
+    "\"\<BusinessDay\>\""}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["D", 
+   RowBox[{"1", "w"}]], ":=", 
+  RowBox[{"DayPlus", "[", 
+   RowBox[{
+    SubscriptBox["D", "today"], ",", " ", "7", ",", " ", 
+    "\"\<BusinessDay\>\""}], "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.},
+ CellChangeTimes->{{3.695079376339652*^9, 3.695079502595717*^9}, {
+   3.6950795891686974`*^9, 3.695079801356176*^9}, {3.6950798499555273`*^9, 
+   3.695079911319807*^9}, {3.695079999906189*^9, 3.695080011311288*^9}, {
+   3.695080245426816*^9, 3.6950804106120462`*^9}, {3.695080475072853*^9, 
+   3.695080592910783*^9}, {3.6950806677663517`*^9, 3.695080682555685*^9}, {
+   3.695080717790873*^9, 3.695081051353982*^9}, {3.695081091544939*^9, 
+   3.695081186295656*^9}, {3.695081322270076*^9, 3.69508148659025*^9}, {
+   3.6950886227356997`*^9, 3.695088803212288*^9}, {3.69508883729055*^9, 
+   3.695088912947377*^9}, {3.695088951031129*^9, 3.6950889830325212`*^9}, {
+   3.695089054687379*^9, 3.695089379263386*^9}, {3.695089422458159*^9, 
+   3.695089494163958*^9}, {3.6950895884380302`*^9, 3.695089601240788*^9}, {
+   3.69509037610157*^9, 3.695090404065206*^9}, {3.695090456849062*^9, 
+   3.6950905398339148`*^9}, {3.695090571204142*^9, 3.695091078306497*^9}, {
+   3.695091113873022*^9, 3.695091130256905*^9}, {3.695091160414537*^9, 
+   3.695091203585442*^9}, {3.695091252546473*^9, 3.6950914425036297`*^9}, {
+   3.695091578078233*^9, 3.695091580689975*^9}, {3.695091637329965*^9, 
+   3.6950916422879467`*^9}, {3.6950917873243303`*^9, 3.695091934126862*^9}, {
+   3.6950919663895273`*^9, 3.695091971094592*^9}, {3.695092918156129*^9, 
+   3.695092929986456*^9}, {3.695093021478133*^9, 3.695093045296797*^9}, {
+   3.695093103306562*^9, 3.695093128079434*^9}, {3.69509317171984*^9, 
+   3.6950932101376657`*^9}, {3.6950934358757677`*^9, 3.695093446500691*^9}, {
+   3.695093770890923*^9, 3.695093829782587*^9}, {3.6950940157387753`*^9, 
+   3.6950941085264263`*^9}, {3.695094579835349*^9, 3.695094674374529*^9}, {
+   3.695094881236596*^9, 3.6950949416310863`*^9}, {3.6950950231721153`*^9, 
+   3.69509505232723*^9}, {3.695095212050234*^9, 3.695095217609029*^9}, 
+   3.695095468105589*^9, {3.6950962321090927`*^9, 3.6950962493761063`*^9}, {
+   3.695100896944475*^9, 3.6951009053072443`*^9}, {3.695100943890955*^9, 
+   3.695101108069762*^9}, {3.695111713835101*^9, 3.695111724199677*^9}, 
+   3.6951190552818403`*^9, {3.700369864126211*^9, 3.7003699223688583`*^9}, 
+   3.700369992238206*^9, 3.7003702574395103`*^9, {3.700370476529909*^9, 
+   3.70037050836215*^9}, {3.700370565024124*^9, 3.700370589527206*^9}, {
+   3.700370772974432*^9, 3.700370773109373*^9}, 3.7003711815294867`*^9, 
+   3.700371211659233*^9, {3.7003715097141743`*^9, 3.7003715172672462`*^9}, {
+   3.700371695891692*^9, 3.70037169787951*^9}, {3.7003718136823273`*^9, 
+   3.700371817317665*^9}, {3.700371880211206*^9, 3.7003720063976297`*^9}, {
+   3.700372042772044*^9, 3.700372050294901*^9}, {3.700372174875083*^9, 
+   3.700372179006028*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Day Count Factor", "Chapter"]], "Text",
+ CellGroupingRules->{"GroupTogetherGrouping", 10002.},
+ CellChangeTimes->{{3.6950953526949244`*^9, 3.695095376010866*^9}, 
+   3.700370996160563*^9, {3.700373224094577*^9, 3.7003732282675247`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Act360", "[", 
+   RowBox[{"x_", ",", " ", "y_"}], "]"}], " ", ":=", " ", 
+  RowBox[{
+   RowBox[{"DayCount", "[", 
+    RowBox[{"x", ",", " ", "y"}], "]"}], "/", 
+   "360"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Dcf", "[", "x_", "]"}], " ", ":=", 
+   RowBox[{"Act360", "[", 
+    RowBox[{
+     SubscriptBox["D", "today"], ",", " ", "x"}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["dcf", "overnight"], ":=", 
+  RowBox[{"Dcf", "[", 
+   SubscriptBox["D", "overnight"], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["dcf", "tmrnext"], ":=", 
+  RowBox[{"Dcf", "[", 
+   SubscriptBox["D", "tmrnext"], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["dcf", "settle"], ":=", 
+  RowBox[{"Dcf", "[", 
+   SubscriptBox["D", "settle"], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["dcf", 
+   RowBox[{"1", "w"}]], ":=", 
+  RowBox[{"Dcf", "[", 
+   SubscriptBox["D", 
+    RowBox[{"1", "w"}]], " ", "]"}]}]}], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10002.},
+ CellChangeTimes->{
+  3.695095516457033*^9, {3.695095568494102*^9, 3.6950955783997993`*^9}, {
+   3.695095942599526*^9, 3.695095998966744*^9}, {3.695096078962903*^9, 
+   3.69509614570632*^9}, {3.695096212666945*^9, 3.695096225885901*^9}, {
+   3.6950965054086657`*^9, 3.695096575137484*^9}, 3.700370996162777*^9, {
+   3.700373224095879*^9, 3.700373228268311*^9}}]
+}, Open  ]],
+
+Cell[TextData[StyleBox["", "Item"]], "Text",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{{3.695095502757262*^9, 3.6950955056840553`*^9}, {
+   3.6950955811761007`*^9, 3.6950956659229593`*^9}, {3.695096593551983*^9, 
+   3.69509660722795*^9}, 3.7003709961638002`*^9, {3.700371163456901*^9, 
+   3.700371167245273*^9}, {3.7003725386294622`*^9, 3.7003726951817427`*^9}, {
+   3.700372910755698*^9, 3.700372912085971*^9}}],
+
+Cell[TextData[StyleBox["Interest Rates", "Chapter"]], "Text",
+ CellChangeTimes->{{3.7003715939781237`*^9, 3.700371595858007*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  SubscriptBox["r", "overnight"], ":=", 
+  RowBox[{"1", "/", "100"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["r", "tmrnext"], ":=", 
+  RowBox[{"1", "/", "100"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["r", 
+   RowBox[{"1", "w"}]], ":=", 
+  RowBox[{"15", "/", "1000"}]}]}], "Input",
+ CellChangeTimes->{{3.700371605823488*^9, 3.700371634192848*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Discount Factor", "Chapter"]], "Text",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.},
+ CellChangeTimes->{3.700371164629692*^9, 3.7003711947374268`*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  SubscriptBox["df", "overnight"], "  ", ":=", 
+  RowBox[{"1", "/", 
+   RowBox[{"(", 
+    RowBox[{"1", "+", 
+     RowBox[{
+      SubscriptBox["r", "overnight"], " ", 
+      SubscriptBox["dcf", "overnight"]}]}], 
+    ")"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["df", "tmrnext"], ":=", 
+  RowBox[{
+   SubscriptBox["df", "overnight"], "/", 
+   RowBox[{"(", 
+    RowBox[{"1", "+", 
+     RowBox[{
+      SubscriptBox["r", "tmrnext"], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["dcf", "settle"], "-", 
+        SubscriptBox["dcf", "overnight"]}], ")"}]}]}], 
+    ")"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["df", "settle"], ":=", 
+  SubscriptBox["df", "tmrnext"]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["df", 
+    RowBox[{"1", "w"}]], ":=", 
+   RowBox[{
+    SubscriptBox["df", "settle"], "/", 
+    RowBox[{"(", 
+     RowBox[{"1", "+", 
+      RowBox[{
+       SubscriptBox["r", 
+        RowBox[{"1", "w"}]], 
+       RowBox[{"(", 
+        RowBox[{
+         SubscriptBox["dcf", 
+          RowBox[{"1", "w"}]], "-", 
+         SubscriptBox["dcf", "settle"]}], ")"}]}]}], ")"}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"NestList", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"#", "-", " ", 
+        RowBox[{
+         RowBox[{"f", "[", "#", "]"}], "/", 
+         RowBox[{
+          RowBox[{"f", "'"}], "[", "#", "]"}]}]}], " ", "&"}], ",", "1", ",", 
+      " ", "5"}], "]"}], "\[IndentingNewLine]", 
+    RowBox[{"FindRoot", "[", 
+     RowBox[{
+      RowBox[{"f", "[", "x", "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", " ", "1"}], "}"}]}], "]"}]}], "*)"}]}]}], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.},
+ CellChangeTimes->{{3.69509581697965*^9, 3.695095927002193*^9}, {
+   3.695096293040593*^9, 3.6950963033919907`*^9}, {3.69509634186069*^9, 
+   3.695096381082706*^9}, {3.695096451772915*^9, 3.695096453328907*^9}, {
+   3.695096658849247*^9, 3.695096708546349*^9}, 3.69509697357867*^9, {
+   3.6951007371673517`*^9, 3.695100742526145*^9}, 3.695100805464006*^9, 
+   3.695100844068131*^9, {3.700371194737874*^9, 3.700371199263233*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Grid", "Chapter"]], "Text",
+ CellGroupingRules->{"GroupTogetherGrouping", 10002.},
+ CellChangeTimes->{{3.7003712471895027`*^9, 3.700371260598031*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Grid", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<label\>\"", ",", " ", "\"\<date\>\"", ",", " ", "\"\<dcf\>\"", 
+        ",", " ", "\"\<df\>\""}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<O/N\>\"", ",", " ", 
+        SubscriptBox["D", "overnight"], ",", " ", 
+        RowBox[{"N", "[", 
+         SubscriptBox["dcf", "overnight"], "]"}], ",", " ", 
+        RowBox[{"N", "[", 
+         RowBox[{
+          SubscriptBox["df", "overnight"], ",", " ", "15"}], "]"}]}], "}"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<T/N\>\"", ",", " ", 
+        SubscriptBox["D", "tmrnext"], ",", " ", 
+        RowBox[{"N", "[", 
+         SubscriptBox["dcf", "tmrnext"], "]"}], ",", " ", 
+        RowBox[{"N", "[", 
+         RowBox[{
+          SubscriptBox["df", "tmrnext"], ",", " ", "15"}], "]"}]}], "}"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<1w\>\"", ",", " ", 
+        SubscriptBox["D", 
+         RowBox[{"1", "w"}]], ",", " ", 
+        RowBox[{"N", "[", 
+         SubscriptBox["dcf", 
+          RowBox[{"1", "w"}]], "]"}], ",", " ", 
+        RowBox[{"N", "[", 
+         RowBox[{
+          SubscriptBox["df", 
+           RowBox[{"1", "w"}]], ",", " ", "15"}], "]"}]}], "}"}]}], "}"}], 
+    ",", " ", "\[IndentingNewLine]", 
+    RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10002.},
+ CellChangeTimes->{{3.7003712605985003`*^9, 3.700371264459654*^9}, {
+   3.700371297943698*^9, 3.700371415296605*^9}, {3.700371674027705*^9, 
+   3.700371675912318*^9}, {3.700372193314004*^9, 3.700372205815629*^9}, {
+   3.700373427923188*^9, 3.700373453882324*^9}, {3.7003734849664516`*^9, 
+   3.700373514685299*^9}, 3.700373938280534*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"label\"\>", "\<\"date\"\>", "\<\"dcf\"\>", "\<\"df\"\>"},
+    {"\<\"O/N\"\>", 
+     TemplateBox[{RowBox[{"\"Tue 5 Jul 2016\""}],RowBox[{"DateObject", "[", 
+         RowBox[{"{", 
+           RowBox[{"2016", ",", "7", ",", "5"}], "}"}], "]"}]},
+      "DateObject",
+      Editable->False], "0.011111111111111112`", 
+     "0.99988890123319631152094211755`15."},
+    {"\<\"T/N\"\>", 
+     TemplateBox[{RowBox[{"\"Wed 6 Jul 2016\""}],RowBox[{"DateObject", "[", 
+         RowBox[{"{", 
+           RowBox[{"2016", ",", "7", ",", "6"}], "}"}], "]"}]},
+      "DateObject",
+      Editable->False], "0.013888888888888888`", 
+     "0.9998611273129931728216970704`15."},
+    {"\<\"1w\"\>", 
+     TemplateBox[{RowBox[{"\"Wed 13 Jul 2016\""}],RowBox[{"DateObject", "[", 
+         RowBox[{"{", 
+           RowBox[{"2016", ",", "7", ",", "13"}], "}"}], "]"}]},
+      "DateObject",
+      Editable->False], "0.03333333333333333`", 
+     "0.99956958618368959668932934934`15."}
+   },
+   AutoDelete->False,
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{
+  3.700372069831827*^9, {3.70037218487177*^9, 3.700372207244486*^9}, 
+   3.700372458471833*^9, 3.700373457395896*^9, {3.700373493181921*^9, 
+   3.7003735177553263`*^9}}]
+},
+WindowSize->{1024, 712},
+WindowMargins->{{0, Automatic}, {0, 28}},
+FrontEndVersion->"11.0 for Linux ARM (32-bit) (January 17, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[560, 20, 325, 4, 67, "Text"],
+Cell[CellGroupData[{
+Cell[910, 28, 172, 2, 55, "Text",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.}],
+Cell[1085, 32, 3812, 69, 153, "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.}]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4934, 106, 260, 3, 55, "Text",
+ CellGroupingRules->{"GroupTogetherGrouping", 10002.}],
+Cell[5197, 111, 1452, 39, 170, "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10002.}]
+}, Open  ]],
+Cell[6664, 153, 444, 6, 31, "Text",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
+Cell[7111, 161, 129, 1, 55, "Text"],
+Cell[7243, 164, 396, 11, 79, "Input"],
+Cell[CellGroupData[{
+Cell[7664, 179, 183, 2, 55, "Text",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.}],
+Cell[7850, 183, 2228, 66, 171, "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.}]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10115, 254, 174, 2, 55, "Text",
+ CellGroupingRules->{"GroupTogetherGrouping", 10002.}],
+Cell[10292, 258, 1887, 47, 148, "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10002.}]
+}, Open  ]],
+Cell[12194, 308, 1375, 32, 126, "Output"]
+}
+]
+*)
+

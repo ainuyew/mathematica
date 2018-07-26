@@ -1,0 +1,376 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframEngine 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       160,          7]
+NotebookDataLength[     13703,        367]
+NotebookOptionsPosition[     13347,        351]
+NotebookOutlinePosition[     13686,        366]
+CellTagsIndexPosition[     13643,        363]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Black-76", "Title"],
+ "\nReference: https://en.wikipedia.org/wiki/Black_model\n\n",
+ StyleBox["Formulas", "Chapter"],
+ "\n\n",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{"c", "=", 
+    RowBox[{
+     SuperscriptBox["e", 
+      RowBox[{"-", "rT"}]], "[", 
+     RowBox[{
+      RowBox[{"FN", "(", 
+       SubscriptBox["d", "1"], ")"}], "-", 
+      RowBox[{"KN", "(", 
+       SubscriptBox["d", "2"], ")"}]}], "]"}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"p", "=", 
+    RowBox[{
+     SuperscriptBox["e", 
+      RowBox[{"-", "rT"}]], "[", 
+     RowBox[{
+      RowBox[{"KN", "(", 
+       RowBox[{"-", 
+        SubscriptBox["d", "2"]}], ")"}], "-", 
+      RowBox[{"FN", "(", 
+       RowBox[{"-", 
+        SubscriptBox["d", "1"]}], ")"}]}], "]"}]}], TraditionalForm]}]],
+ "\n\nwhere\n",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{
+    SubscriptBox["d", "1"], "=", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"ln", "(", 
+       RowBox[{"F", "/", "K"}], ")"}], "+", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         SuperscriptBox["\[Sigma]", "2"], "/", "2"}], ")"}], "T"}]}], 
+     RowBox[{"\[Sigma]", 
+      SqrtBox["T"]}]]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    SubscriptBox["d", "2"], "=", 
+    RowBox[{
+     FractionBox[
+      RowBox[{
+       RowBox[{"ln", "(", 
+        RowBox[{"F", "/", "K"}], ")"}], "-", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          SuperscriptBox["\[Sigma]", "2"], "/", "2"}], ")"}], "T"}]}], 
+      RowBox[{"\[Sigma]", 
+       SqrtBox["T"]}]], "=", 
+     RowBox[{
+      SubscriptBox["d", "1"], "-", 
+      RowBox[{"\[Sigma]", 
+       SqrtBox["T"]}]}]}]}], TraditionalForm]}]],
+ "\nN(.): cumulative normal distribution function\nr: risk free interest rate\
+\nT: number of days in years from expiry date to today\nF: forward price\nK: \
+strike price\n\[Sigma]: volatility"
+}], "Text",
+ CellChangeTimes->{{3.6948450902584677`*^9, 3.694845117903269*^9}, {
+  3.6948451961192827`*^9, 3.694845231508183*^9}, {3.69484533189037*^9, 
+  3.694845629592112*^9}, {3.6948456655008698`*^9, 3.694845702345726*^9}, {
+  3.694846299888402*^9, 3.6948463794523363`*^9}, {3.6949870267491217`*^9, 
+  3.694987033201604*^9}, {3.694987183431778*^9, 3.694987196665831*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"c", "[", 
+   RowBox[{"r_", ",", "T_", ",", "F_", ",", "K_", ",", "\[Sigma]_"}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"F", " ", 
+     RowBox[{"CNDF", "[", 
+      RowBox[{
+       SubscriptBox["d", "1"], "[", 
+       RowBox[{"F", ",", "K", ",", "\[Sigma]", ",", "T"}], "]"}], "]"}]}], 
+    "-", 
+    RowBox[{"K", " ", 
+     RowBox[{"CNDF", "[", 
+      RowBox[{
+       SubscriptBox["d", "2"], "[", 
+       RowBox[{"F", ",", "K", ",", "\[Sigma]", ",", "T"}], "]"}], "]"}]}]}], 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"r", " ", "T"}]]]}], "\n", 
+ RowBox[{
+  RowBox[{"p", "[", 
+   RowBox[{"r_", ",", "T_", ",", "F_", ",", "K_", ",", "\[Sigma]_"}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"K", " ", 
+     RowBox[{"CNDF", "[", 
+      RowBox[{"-", 
+       RowBox[{
+        SubscriptBox["d", "2"], "[", 
+        RowBox[{"F", ",", "K", ",", "\[Sigma]", ",", "T"}], "]"}]}], "]"}]}], 
+    "-", 
+    RowBox[{"F", " ", 
+     RowBox[{"CNDF", "[", 
+      RowBox[{"-", 
+       RowBox[{
+        SubscriptBox["d", "1"], "[", 
+        RowBox[{"F", ",", "K", ",", "\[Sigma]", ",", "T"}], "]"}]}], 
+      "]"}]}]}], 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"r", " ", "T"}]]]}], "\n", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["d", "1"], "[", 
+   RowBox[{"F_", ",", "K_", ",", "\[Sigma]_", ",", "T_"}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"Log", "[", 
+     FractionBox["F", "K"], "]"}], "+", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["\[Sigma]", "2"], " ", "T"}], "2"]}], 
+   RowBox[{"\[Sigma]", " ", 
+    SqrtBox["T"]}]]}], "\n", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["d", "2"], "[", 
+   RowBox[{"F_", ",", "K_", ",", "\[Sigma]_", ",", "T_"}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"Log", "[", 
+     FractionBox["F", "K"], "]"}], "-", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["\[Sigma]", "2"], " ", "T"}], "2"]}], 
+   RowBox[{"\[Sigma]", " ", 
+    SqrtBox["T"]}]]}], "\n", 
+ RowBox[{
+  RowBox[{"CNDF", "[", "x_", "]"}], ":=", 
+  RowBox[{"CDF", "[", 
+   RowBox[{
+    RowBox[{"NormalDistribution", "[", "]"}], ",", "x"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.6944199369312487`*^9, 3.694419978519497*^9}, {
+   3.694420015779052*^9, 3.694420109580226*^9}, {3.694420243894265*^9, 
+   3.694420247067457*^9}, {3.694420277808568*^9, 3.6944202937981873`*^9}, {
+   3.694420471123761*^9, 3.694420493374879*^9}, {3.6944652863167057`*^9, 
+   3.6944652892113323`*^9}, {3.694465474457456*^9, 3.694465482711554*^9}, {
+   3.694492745734036*^9, 3.694492768996176*^9}, {3.6944932946785727`*^9, 
+   3.694493382339382*^9}, {3.69449341376085*^9, 3.6944934877087193`*^9}, 
+   3.694493538346731*^9, {3.6944935949110327`*^9, 3.694493631292016*^9}, {
+   3.694493685578919*^9, 3.694493733748102*^9}, {3.694493808047963*^9, 
+   3.694493823247488*^9}, {3.694494013364088*^9, 3.69449406892557*^9}, {
+   3.69455077225202*^9, 3.6945507777674828`*^9}, {3.694551563937915*^9, 
+   3.694551569861589*^9}, {3.694551712173204*^9, 3.694551780307375*^9}, {
+   3.694551855602219*^9, 3.694551858874712*^9}, {3.69455190835798*^9, 
+   3.694552096336034*^9}, {3.69455214006394*^9, 3.694552147069057*^9}, {
+   3.694552180349162*^9, 3.6945522714641933`*^9}, {3.694552949521441*^9, 
+   3.694552991255945*^9}, {3.694556297825942*^9, 3.69455631607845*^9}, {
+   3.694556490201256*^9, 3.69455650052186*^9}, {3.694556554113385*^9, 
+   3.694556621412047*^9}, {3.6945567150109463`*^9, 3.69455673308957*^9}, {
+   3.6945568074409647`*^9, 3.6945568345424356`*^9}, {3.694556906470196*^9, 
+   3.69455693364601*^9}, {3.694557259873757*^9, 3.6945572920108*^9}, {
+   3.694557431410441*^9, 3.694557459387143*^9}, {3.694558147486362*^9, 
+   3.694558178761682*^9}, {3.694558292994967*^9, 3.694558293469241*^9}, {
+   3.69456092779455*^9, 3.694560928532735*^9}, {3.6945613574705763`*^9, 
+   3.694561362210812*^9}, {3.6945614462835407`*^9, 3.694561471594947*^9}, {
+   3.6948349532772713`*^9, 3.69483498324393*^9}, {3.694835511081225*^9, 
+   3.694835570654537*^9}, 3.694839843320282*^9, 3.694845072350119*^9, {
+   3.6948457583152037`*^9, 3.6948457770104856`*^9}, {3.6948458244625883`*^9, 
+   3.694845848142968*^9}, 3.6948458818274117`*^9, {3.694986109553294*^9, 
+   3.694986164601565*^9}, {3.6949863152045193`*^9, 3.694986333881934*^9}, {
+   3.6949866700635157`*^9, 3.694986690188438*^9}, 3.694986913917301*^9, {
+   3.694987081457468*^9, 3.694987081489003*^9}, {3.694987323083127*^9, 
+   3.694987339478861*^9}, {3.694993413692092*^9, 3.6949934191447678`*^9}}],
+
+Cell[TextData[{
+ StyleBox["Example", "Chapter"],
+ "\n",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{
+    SubscriptBox["Price", "strike"], ":", " ", 
+    RowBox[{"strike", " ", "price"}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    SubscriptBox["Price", "forward"], ":", " ", 
+    RowBox[{"forward", " ", "price"}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    SubscriptBox["Date", "current"], ":", " ", "today"}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    SubscriptBox["Date", "expiry"], "option", " ", "expiry", " ", "date"}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    SubscriptBox["Date", "payment"], ":", " ", 
+    RowBox[{"payment", " ", "date"}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"\[Sigma]", ":", " ", 
+    RowBox[{"volatility", " ", "of", " ", "projection", " ", "index"}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    SubscriptBox["df", "payment"], ":", " ", 
+    RowBox[{
+    "discount", " ", "factor", " ", "from", " ", "payment", " ", "date", " ", 
+     "to", " ", "today"}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    SubscriptBox["df", "payment2expiry"], ":", " ", 
+    RowBox[{
+    "discount", " ", "factor", " ", "from", " ", "payment", " ", "date", " ", 
+     "to", " ", "expiry", " ", "date"}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    SubscriptBox["T", "expiry"], ":", " ", 
+    RowBox[{
+    "number", " ", "of", " ", "days", " ", "in", " ", "years", " ", "from", 
+     " ", "today", " ", "to", " ", "expiry", " ", "date", " ", 
+     RowBox[{"(", 
+      RowBox[{"Act", "/", "365"}], ")"}]}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    SubscriptBox["T", "payment"], ":", " ", 
+    RowBox[{
+    "number", " ", "of", " ", "days", " ", "in", " ", "years", " ", "from", 
+     " ", "today", " ", "to", " ", "payment", " ", "date", " ", 
+     RowBox[{"(", 
+      RowBox[{"Act", "/", "365"}], ")"}]}]}], TraditionalForm]}]]
+}], "Text",
+ CellChangeTimes->{{3.69484590265963*^9, 3.6948459366731787`*^9}, {
+   3.694846060177145*^9, 3.694846288343261*^9}, 3.69498684915347*^9, 
+   3.694986880696434*^9, {3.69498809274613*^9, 3.694988132159178*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   SubscriptBox["Date", 
+    RowBox[{"current", " "}]], ":=", 
+   RowBox[{"DateObject", "[", 
+    RowBox[{"{", 
+     RowBox[{"2016", ",", " ", "8", ",", " ", "3"}], "}"}], "]"}]}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["Date", 
+   RowBox[{"expiry", " "}]], ":=", 
+  RowBox[{"DateObject", "[", 
+   RowBox[{"{", 
+    RowBox[{"2016", ",", " ", "8", ",", " ", "31"}], "}"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["Date", 
+   RowBox[{"payment", " "}]], ":=", 
+  RowBox[{"DateObject", "[", 
+   RowBox[{"{", 
+    RowBox[{"2016", ",", " ", "9", ",", " ", "2"}], "}"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["Price", "strike"], ":=", "45"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["Price", "forward"], ":=", "40.123"}], "\[IndentingNewLine]", 
+ RowBox[{"\[Sigma]", ":=", ".30123"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["df", "payment"], ":=", 
+  ".999167348964308"}], "\[IndentingNewLine]", 
+ RowBox[{" ", 
+  RowBox[{
+   SubscriptBox["df", "payment2expiry"], ":=", 
+   ".999944467276186"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["T", "expiry"], ":=", 
+  RowBox[{
+   RowBox[{"DayCount", "[", 
+    RowBox[{
+     SubscriptBox["Date", "current"], ",", " ", 
+     SubscriptBox["Date", "expiry"]}], "]"}], "/", 
+   "365"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["T", "payment"], ":=", 
+  RowBox[{
+   RowBox[{"DayCount", "[", 
+    RowBox[{
+     SubscriptBox["Date", "current"], ",", 
+     SubscriptBox["Date", "payment"]}], " ", "]"}], "/", 
+   "365"}]}], "\[IndentingNewLine]", 
+ RowBox[{"r", ":=", 
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"Log", "[", 
+     SubscriptBox["df", "payment"], "]"}]}], "/", 
+   SubscriptBox["T", "payment"]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"c", "[", 
+    RowBox[{"r", ",", " ", 
+     SubscriptBox["T", "expiry"], ",", " ", 
+     SubscriptBox["Price", "forward"], ",", 
+     SubscriptBox["Price", "strike"], ",", " ", "\[Sigma]"}], "]"}], " ", "*",
+    " ", 
+   SubscriptBox["df", "payment2expiry"]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{
+  3.694552957899529*^9, {3.694557295851363*^9, 3.69455729685463*^9}, 
+   3.6945575047807007`*^9, {3.694557565449051*^9, 3.6945576017779093`*^9}, {
+   3.694561689912559*^9, 3.694561787366692*^9}, {3.694561845200181*^9, 
+   3.694561848704451*^9}, {3.694834766424912*^9, 3.694834836942814*^9}, {
+   3.694834912881028*^9, 3.694834917269948*^9}, {3.694834972968689*^9, 
+   3.694834991083127*^9}, {3.694835058566475*^9, 3.694835102886194*^9}, {
+   3.694835189083531*^9, 3.694835230758378*^9}, {3.6948370018200502`*^9, 
+   3.694837073532844*^9}, {3.6948372895255747`*^9, 3.694837343674831*^9}, {
+   3.6948386024391327`*^9, 3.6948386900494347`*^9}, {3.69483874299721*^9, 
+   3.6948387996717787`*^9}, {3.694838923747237*^9, 3.694838929608499*^9}, {
+   3.694838961794311*^9, 3.694838985663025*^9}, {3.6948390462297773`*^9, 
+   3.694839058816641*^9}, {3.694839176179175*^9, 3.694839204597036*^9}, {
+   3.694839577695677*^9, 3.694839623819948*^9}, {3.694839716088681*^9, 
+   3.694839771574449*^9}, {3.694839802174539*^9, 3.6948398307011623`*^9}, {
+   3.694840865818441*^9, 3.694840883527842*^9}, 3.694845888153987*^9, {
+   3.6949872221864977`*^9, 3.694987225572043*^9}, {3.694987360170698*^9, 
+   3.6949873604854383`*^9}, {3.69498867206945*^9, 3.694988675422357*^9}, {
+   3.6949887066314573`*^9, 3.694988709347599*^9}, {3.6949893513283443`*^9, 
+   3.6949893534011307`*^9}, 3.694990175312954*^9, 3.694990689660163*^9, {
+   3.695012207904429*^9, 3.695012377492951*^9}, 3.695012630838388*^9}]
+},
+WindowSize->{1105, 829},
+WindowMargins->{{66, Automatic}, {188, Automatic}},
+FrontEndVersion->"10.3 for Linux ARM (32-bit) (January 18, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[560, 20, 2279, 70, 465, "Text"],
+Cell[2842, 92, 4508, 102, 351, "Input"],
+Cell[7353, 196, 2331, 64, 281, "Text"],
+Cell[9687, 262, 3656, 87, 334, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,147 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframEngine 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       160,          7]
+NotebookDataLength[      4326,        138]
+NotebookOptionsPosition[      4019,        122]
+NotebookOutlinePosition[      4358,        137]
+CellTagsIndexPosition[      4315,        134]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"c", "[", 
+   RowBox[{"r_", ",", "T_", ",", "F_", ",", "K_", ",", "\[Sigma]_"}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"F", " ", 
+     RowBox[{"CNDF", "[", 
+      RowBox[{
+       SubscriptBox["d", "1"], "[", 
+       RowBox[{"F", ",", "K", ",", "\[Sigma]", ",", "T"}], "]"}], "]"}]}], 
+    "-", 
+    RowBox[{"K", " ", 
+     RowBox[{"CNDF", "[", 
+      RowBox[{
+       SubscriptBox["d", "2"], "[", 
+       RowBox[{"F", ",", "K", ",", "\[Sigma]", ",", "T"}], "]"}], "]"}]}]}], 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"r", " ", "T"}]]]}], "\n", 
+ RowBox[{
+  RowBox[{"p", "[", 
+   RowBox[{"r_", ",", "T_", ",", "F_", ",", "K_", ",", "\[Sigma]_"}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"K", " ", 
+     RowBox[{"CNDF", "[", 
+      RowBox[{"-", 
+       RowBox[{
+        SubscriptBox["d", "2"], "[", 
+        RowBox[{"F", ",", "K", ",", "\[Sigma]", ",", "T"}], "]"}]}], "]"}]}], 
+    "-", 
+    RowBox[{"F", " ", 
+     RowBox[{"CNDF", "[", 
+      RowBox[{"-", 
+       RowBox[{
+        SubscriptBox["d", "1"], "[", 
+        RowBox[{"F", ",", "K", ",", "\[Sigma]", ",", "T"}], "]"}]}], 
+      "]"}]}]}], 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"r", " ", "T"}]]]}], "\n", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["d", "1"], "[", 
+   RowBox[{"F_", ",", "K_", ",", "\[Sigma]_", ",", "T_"}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"Log", "[", 
+     FractionBox["F", "K"], "]"}], "+", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["\[Sigma]", "2"], " ", "T"}], "2"]}], 
+   RowBox[{"\[Sigma]", " ", 
+    SqrtBox["T"]}]]}], "\n", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["d", "2"], "[", 
+   RowBox[{"F_", ",", "K_", ",", "\[Sigma]_", ",", "T_"}], "]"}], ":=", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"Log", "[", 
+     FractionBox["F", "K"], "]"}], "-", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["\[Sigma]", "2"], " ", "T"}], "2"]}], 
+   RowBox[{"\[Sigma]", " ", 
+    SqrtBox["T"]}]]}], "\n", 
+ RowBox[{
+  RowBox[{"CNDF", "[", "x_", "]"}], ":=", 
+  RowBox[{"CDF", "[", 
+   RowBox[{
+    RowBox[{"NormalDistribution", "[", "]"}], ",", "x"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"r", ":=", ".010089974966243"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["T", "expiry"], ":=", 
+  RowBox[{"331", "/", "365"}]}], "\[IndentingNewLine]", 
+ RowBox[{"F", ":=", "74"}], "\[IndentingNewLine]", 
+ RowBox[{"K", ":=", "40"}], "\[IndentingNewLine]", 
+ RowBox[{"\[Sigma]", ":=", ".31353"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["df", "payment2expiry"], ":=", 
+  ".999723600535064"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "[", 
+   RowBox[{"r", ",", " ", 
+    SubscriptBox["T", "expiry"], ",", " ", "F", ",", " ", "K", ",", " ", 
+    "\[Sigma]"}], "]"}], "*", 
+  SubscriptBox["df", "payment2expiry"]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.695013121539712*^9, 3.695013123427421*^9}, {
+   3.6950131693846703`*^9, 3.6950132021151752`*^9}, {3.695013235516427*^9, 
+   3.695013301885522*^9}, {3.69501334320511*^9, 3.695013343898403*^9}, {
+   3.695013381249545*^9, 3.695013382870411*^9}, {3.695013429679358*^9, 
+   3.695013432930296*^9}, 3.695015307694107*^9, {3.695015415853778*^9, 
+   3.695015586753838*^9}, {3.695015620177343*^9, 3.695015665868338*^9}}],
+
+Cell[BoxData["33.79601158659868`"], "Output",
+ CellChangeTimes->{3.69501554884653*^9, 3.695015645367662*^9, 
+  3.695072736670891*^9}]
+}, Open  ]]
+},
+WindowSize->{910, 763},
+WindowMargins->{{354, Automatic}, {203, Automatic}},
+FrontEndVersion->"10.3 for Linux ARM (32-bit) (January 18, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[582, 22, 3285, 93, 444, "Input"],
+Cell[3870, 117, 133, 2, 29, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,136 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframEngine 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       160,          7]
+NotebookDataLength[      3663,        127]
+NotebookOptionsPosition[      3282,        109]
+NotebookOutlinePosition[      3621,        124]
+CellTagsIndexPosition[      3578,        121]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[StyleBox["Linear", "Section"]], "Text",
+ CellChangeTimes->{{3.695535141084752*^9, 3.6955351418059063`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  FractionBox[
+   RowBox[{
+    SubscriptBox["y", "2"], "-", 
+    SubscriptBox["y", "0"]}], 
+   RowBox[{
+    SubscriptBox["x", "2"], "-", 
+    SubscriptBox["x", "0"]}]], "\[Equal]", 
+  FractionBox[
+   RowBox[{
+    SubscriptBox["y", "1"], "-", 
+    SubscriptBox["y", "0"]}], 
+   RowBox[{
+    SubscriptBox["x", "1"], "-", 
+    SubscriptBox["x", "0"]}]]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Linear", "[", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "0"], "_"}], ",", " ", 
+    RowBox[{
+     SubscriptBox["x", "2"], "_"}], ",", " ", 
+    RowBox[{
+     SubscriptBox["y", "0"], "_"}], ",", " ", 
+    RowBox[{
+     SubscriptBox["y", "2"], "_"}], ",", " ", 
+    RowBox[{
+     SubscriptBox["x", "1"], "_"}]}], "]"}], " ", ":=", " ", 
+  FractionBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "2"], " ", 
+     SubscriptBox["y", "0"]}], " ", "-", " ", 
+    RowBox[{
+     SubscriptBox["x", "1"], " ", 
+     SubscriptBox["y", "0"]}], " ", "-", 
+    RowBox[{
+     SubscriptBox["x", "0"], " ", 
+     SubscriptBox["y", "2"]}], " ", "+", 
+    RowBox[{
+     SubscriptBox["x", "1"], " ", 
+     SubscriptBox["y", "2"]}]}], 
+   RowBox[{
+    SubscriptBox["x", "2"], "-", 
+    SubscriptBox["x", "0"]}]]}], "\[IndentingNewLine]", 
+ RowBox[{"Linear", "[", 
+  RowBox[{"0", ",", " ", "1", ",", " ", "0", ",", " ", "1", ",", " ", ".5"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.695535156183077*^9, 3.695535205017908*^9}, {
+  3.695535240292049*^9, 3.6955352874851933`*^9}, {3.695535323826208*^9, 
+  3.6955354736457577`*^9}, {3.695535575785507*^9, 3.6955355854920073`*^9}, {
+  3.695535616673805*^9, 3.6955357355191727`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{
+    RowBox[{"-", 
+     SubscriptBox["y", "0"]}], "+", 
+    SubscriptBox["y", "2"]}], 
+   RowBox[{
+    RowBox[{"-", 
+     SubscriptBox["x", "0"]}], "+", 
+    SubscriptBox["x", "2"]}]], "\[Equal]", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"-", 
+     SubscriptBox["y", "0"]}], "+", 
+    SubscriptBox["y", "1"]}], 
+   RowBox[{
+    RowBox[{"-", 
+     SubscriptBox["x", "0"]}], "+", 
+    SubscriptBox["x", "1"]}]]}]], "Output",
+ CellChangeTimes->{3.695535206683098*^9, 3.695535243842218*^9, 
+  3.695535290017517*^9, 3.695535483722693*^9, 3.6955355871882267`*^9, 
+  3.695535634768714*^9, 3.695535665150095*^9, 3.695535740319261*^9}],
+
+Cell[BoxData["0.5`"], "Output",
+ CellChangeTimes->{3.695535206683098*^9, 3.695535243842218*^9, 
+  3.695535290017517*^9, 3.695535483722693*^9, 3.6955355871882267`*^9, 
+  3.695535634768714*^9, 3.695535665150095*^9, 3.6955357404193153`*^9}]
+}, Open  ]]
+},
+WindowSize->{799, 851},
+WindowMargins->{{573, Automatic}, {130, Automatic}},
+FrontEndVersion->"10.3 for Linux ARM (32-bit) (January 18, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[560, 20, 121, 1, 46, "Text"],
+Cell[CellGroupData[{
+Cell[706, 25, 1642, 52, 130, "Input"],
+Cell[2351, 79, 675, 22, 58, "Output"],
+Cell[3029, 103, 237, 3, 29, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

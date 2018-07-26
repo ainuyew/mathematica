@@ -1,0 +1,306 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframEngine 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       160,          7]
+NotebookDataLength[     10622,        298]
+NotebookOptionsPosition[     10197,        279]
+NotebookOutlinePosition[     10535,        294]
+CellTagsIndexPosition[     10492,        291]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Fixed Float Swap (Payment Level - Standard)\n", "Section"],
+ "environment: Test_v15",
+ StyleBox["\n", "Section"],
+ "deal # 21210\npayment date: 7th October 2016\nfx fixing date: 30th August \
+2016 + 2 = 1st September 2016\n\n",
+ StyleBox["! Calculated FX rate is not correct",
+  FontColor->RGBColor[1, 0, 0]]
+}], "Text",
+ CellChangeTimes->{{3.695961410147768*^9, 3.695961415223755*^9}, {
+  3.695961673988913*^9, 3.695961677136159*^9}, {3.695961889906354*^9, 
+  3.695961890897688*^9}, {3.695962492428733*^9, 3.695962492785615*^9}, {
+  3.6965630855133142`*^9, 3.69656308653408*^9}, {3.696563189870563*^9, 
+  3.69656321766282*^9}, {3.696564420304763*^9, 3.6965644204484177`*^9}, {
+  3.696564465726158*^9, 3.696564465920149*^9}, {3.696805211681477*^9, 
+  3.696805219045841*^9}, {3.69689005311475*^9, 3.696890064037669*^9}, {
+  3.696892199574695*^9, 3.696892208121479*^9}, {3.696892405833377*^9, 
+  3.69689241780304*^9}, {3.696909345672233*^9, 3.696909346656654*^9}, {
+  3.6969110767848587`*^9, 3.696911088170065*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  SubscriptBox["Px", 
+   RowBox[{"PDB", ",", "Sep16"}]], ":=", 
+  "50.492``50"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["Qty", "bbl"], ":=", "10000"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["Px", 
+   RowBox[{"rec", ",", "fixed", ",", "JPY"}]], ":=", 
+  "6000"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["Px", 
+   RowBox[{"pay", ",", "float", ",", "USD"}]], ":=", 
+  SubscriptBox["Px", 
+   RowBox[{"PDB", ",", " ", "Sep16"}]]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["df", 
+   RowBox[{"USD", ",", "settle"}]], ":=", 
+  ".99990471457169994``50"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["df", 
+   RowBox[{"USD", ",", 
+    RowBox[{"5", "-", "Aug"}]}]], ":=", 
+  ".99923404422485684``50"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["df", 
+   RowBox[{"USD", ",", 
+    RowBox[{"6", "-", "Sep"}]}]], ":=", 
+  ".9981316466403779``50"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["df", 
+   RowBox[{"JPY", ",", "settle"}]], ":=", 
+  "1.0000016666689235``50"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["df", 
+   RowBox[{"JPY", ",", 
+    RowBox[{"5", "-", "Aug"}]}]], ":=", 
+  "1.000010183069072``50"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["df", 
+   RowBox[{"JPY", ",", 
+    RowBox[{"6", "-", "Sep"}]}]], ":=", 
+  ".9980504718817968``50"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["df", 
+   RowBox[{"JPY", ",", "payment"}]], ":=", 
+  "1.0000202401622267``50"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["dcf", 
+   RowBox[{"5", "-", "Aug"}]], ":=", 
+  FractionBox["1", "10"]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["dcf", 
+   RowBox[{"1", "-", "Sep"}]], ":=", 
+  FractionBox["175", "1000"]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["dcf", 
+   RowBox[{"6", "-", "Sep"}]], ":=", 
+  ".188888888888888``50"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["FX", "spot"], ":=", "113.47``50"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["FX", 
+   RowBox[{"5", "-", "Aug"}]], ":=", 
+  RowBox[{
+   SubscriptBox["FX", "spot"], "*", 
+   FractionBox[
+    RowBox[{
+     SubscriptBox["df", 
+      RowBox[{"USD", ",", 
+       RowBox[{"5", "-", "Aug"}]}]], "/", 
+     SubscriptBox["df", 
+      RowBox[{"USD", ",", "settle"}]]}], 
+    RowBox[{
+     SubscriptBox["df", 
+      RowBox[{"JPY", ",", 
+       RowBox[{"5", "-", "Aug"}]}]], "/", 
+     SubscriptBox["df", 
+      RowBox[{"JPY", ",", "settle"}]]}]]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["FX", 
+   RowBox[{"6", "-", "Sep"}]], ":=", 
+  RowBox[{
+   SubscriptBox["FX", "spot"], "*", 
+   FractionBox[
+    RowBox[{
+     SubscriptBox["df", 
+      RowBox[{"USD", ",", 
+       RowBox[{"6", "-", "Sep"}]}]], "/", 
+     SubscriptBox["df", 
+      RowBox[{"USD", ",", "settle"}]]}], 
+    RowBox[{
+     SubscriptBox["df", 
+      RowBox[{"JPY", ",", 
+       RowBox[{"6", "-", "Sep"}]}]], "/", 
+     SubscriptBox["df", 
+      RowBox[{"JPY", ",", "settle"}]]}]]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["FX", "fixing"], ":=", 
+  SuperscriptBox["\[ExponentialE]", 
+   RowBox[{
+    RowBox[{
+     FractionBox[
+      RowBox[{
+       SubscriptBox["dcf", 
+        RowBox[{"1", "-", "Sep"}]], "-", 
+       SubscriptBox["dcf", 
+        RowBox[{"5", "-", "Aug"}]]}], 
+      RowBox[{
+       SubscriptBox["dcf", 
+        RowBox[{"6", "-", "Sep"}]], "-", 
+       SubscriptBox["dcf", 
+        RowBox[{"5", "-", "Aug"}]]}]], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Log", "[", 
+        SubscriptBox["FX", 
+         RowBox[{"6", "-", "Sep"}]], "]"}], "-", 
+       RowBox[{"Log", "[", 
+        SubscriptBox["FX", 
+         RowBox[{"5", "-", "Aug"}]], "]"}]}], ")"}]}], "+", 
+    RowBox[{"Log", "[", 
+     SubscriptBox["FX", 
+      RowBox[{"5", "-", "Aug"}]], "]"}]}]]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fx", "[", 
+   RowBox[{"spotfx_", ",", " ", "basedf_", ",", " ", "quoteddf_"}], "]"}], 
+  " ", ":=", " ", 
+  RowBox[{"spotfx", 
+   FractionBox["basedf", "quoteddf"]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"pv", "[", 
+    RowBox[{
+    "qty_", ",", "fx_", ",", " ", "pay_", ",", " ", "rec_", ",", " ", "df_"}],
+     "]"}], ":=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"qty", " ", "rec"}], "-", " ", 
+      RowBox[{
+       RowBox[{"Round", "[", 
+        RowBox[{
+         RowBox[{"qty", " ", "pay"}], ",", " ", "2"}], "]"}], " ", "fx"}]}], 
+     ")"}], "df"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["PV", "up"], ":=", 
+  RowBox[{"pv", "[", 
+   RowBox[{
+    SubscriptBox["Qty", "bbl"], ",", " ", 
+    RowBox[{
+     SubscriptBox["FX", "spot"], "+", 
+     SubscriptBox["\[Delta]", "shift"]}], ",", " ", 
+    SubscriptBox["Px", 
+     RowBox[{"pay", ",", "float", ",", "USD"}]], ",", " ", 
+    SubscriptBox["Px", 
+     RowBox[{"rec", ",", "fixed", ",", "JPY"}]], ",", " ", 
+    SubscriptBox["df", 
+     RowBox[{"JPY", ",", "payment"}]]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["PV", "down"], ":=", 
+  RowBox[{"pv", "[", 
+   RowBox[{
+    SubscriptBox["Qty", "bbl"], ",", "  ", 
+    RowBox[{
+     SubscriptBox["FX", "spot"], "-", 
+     SubscriptBox["\[Delta]", "shift"]}], ",", " ", 
+    SubscriptBox["Px", 
+     RowBox[{"pay", ",", "float", ",", "USD"}]], ",", " ", 
+    SubscriptBox["Px", 
+     RowBox[{"rec", ",", "fixed", ",", "JPY"}]], ",", " ", 
+    SubscriptBox["df", 
+     RowBox[{"JPY", ",", "payment"}]]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["\[Delta]", "shift"], ":=", 
+  FractionBox["1", "100"]}], "\[IndentingNewLine]", 
+ RowBox[{"N", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"57213034", "/", 
+     SubscriptBox["Qty", "bbl"]}], "/", 
+    SubscriptBox["Px", 
+     RowBox[{"pay", ",", "float", ",", "USD"}]]}], ",", " ", "15"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["FX", "fixing"], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwd0H0s1AEcBvAjhdS8rbz/kZfz0tRtXsMV50ZeF6dNmF0Kt+hYXmZ2d8TN
+vJNoeemWnEpJlJcinLeKbpiJjTpy8nKYl7hma9Xv+f3x3Wd79jz/fM/EJIXG
+qlIoFCZx8MW9C3m8gg2vPJZ1FYybWKsmTZzrhMIv8T3QNsO0H4rraldg5uiP
+VbjsZbUFY/mRpNQeVQc+IV1QQIfU0VF/+EddGAal657RUFWedgNu8tXkcEnM
+U8DCtNhtqDgWpSEgDDNtiIY5L+eSIcfca0hMKGCZDUO5TeoCdFuuXCQ109uC
+4hDqDnxsO6zSSOgR/E4dSja39eB9ylNrmFnQQ4M1CbaukLH5xheKFnRCoU/w
+r7swXl6US/bzY7hPCgnbK9NhauRQIZRV5RdByxG3esjrtHoGacxsSgPhHvuB
+GjRWUzGBluq6pIsXm8xhH5VtAZO5hq8Niza89ufMSEsPWmahtOYT6d9ktgJy
+bjX/gyVcbqMR4YCJRhucljn0wrPfJCMwYnZzGlqsXp+HXTZRCzA/qfUAuvY/
+smMQNrsYnIPHaYdOcMyziw7pdlMMOKOjHwCjRUEcKGxVJsHpaZNsOOt5RAh9
+RrRKILveogI6jvvXQsZwfTO088ttgw4OzHY4xaV9gNq1TSNwMpUyBovXc0k9
+BtfMvPGPBA9LqBdkaw/FmrukgaE8Z3j0SpY7TNG2KQsgFBmfr4K/hRN1ME7P
+XQSVvIRX0Mhe0ALXIpzfQollUAec6d77CLP6D0kv7yqlsDqHPw671VwWYam+
+jZzc02Q7sDhxaxcqUs15gYSJHD8+TJc55sDOA4EQ7mmdKF8npHpnkK4EKp5D
+f6fGbrh/dXYAlp+aG4Ri38AxWCPkSKGoL3wGGtQx5qGi8CdLQajZXhYOldJL
+QzClgjkJr52++RV+FpfOwGMsw++QViMl5RptaGwQ5gW8PwmVIUu6sLeEog+D
+VfgGZJ7VYQjbHsbehpJ64zvwP1iJPVE=
+  "]],
+
+Cell[BoxData["113.31108690485621484591618474214`15."], "Output",
+ CellChangeTimes->{
+  3.6968910262745237`*^9, {3.696891124717389*^9, 3.696891150368828*^9}, {
+   3.696891187569024*^9, 3.6968912374689903`*^9}, {3.696891291559409*^9, 
+   3.696891299116129*^9}, {3.696891365443836*^9, 3.696891439615013*^9}, 
+   3.696891477036886*^9, 3.696892357676756*^9, 3.696892389244945*^9, 
+   3.696909484536553*^9, 3.6969097460524683`*^9, {3.696909929875642*^9, 
+   3.696909940855674*^9}, 3.696910106115779*^9, {3.6969113909556923`*^9, 
+   3.6969113966480083`*^9}, 3.697233065142316*^9, 3.697233596818885*^9, {
+   3.6972356842137613`*^9, 3.697235700768978*^9}, 3.697236806329404*^9, 
+   3.697236847066359*^9, 3.69723688196*^9}],
+
+Cell[BoxData["113.4750224396497887277480981381359787895595962490863201898501`\
+48.96711138441748"], "Output",
+ CellChangeTimes->{
+  3.6968910262745237`*^9, {3.696891124717389*^9, 3.696891150368828*^9}, {
+   3.696891187569024*^9, 3.6968912374689903`*^9}, {3.696891291559409*^9, 
+   3.696891299116129*^9}, {3.696891365443836*^9, 3.696891439615013*^9}, 
+   3.696891477036886*^9, 3.696892357676756*^9, 3.696892389244945*^9, 
+   3.696909484536553*^9, 3.6969097460524683`*^9, {3.696909929875642*^9, 
+   3.696909940855674*^9}, 3.696910106115779*^9, {3.6969113909556923`*^9, 
+   3.6969113966480083`*^9}, 3.697233065142316*^9, 3.697233596818885*^9, {
+   3.6972356842137613`*^9, 3.697235700768978*^9}, 3.697236806329404*^9, 
+   3.697236847066359*^9, 3.6972368819651012`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.696889981467008*^9, 3.6968899814795628`*^9}}]
+},
+WindowSize->{766, 768},
+WindowMargins->{{Automatic, 106}, {Automatic, 78}},
+FrontEndVersion->"11.0 for Linux ARM (32-bit) (January 17, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[560, 20, 1040, 18, 169, "Text"],
+Cell[CellGroupData[{
+Cell[1625, 42, 6976, 206, 914, "Input"],
+Cell[8604, 250, 713, 10, 32, "Output"],
+Cell[9320, 262, 764, 11, 32, "Output"]
+}, Open  ]],
+Cell[10099, 276, 94, 1, 32, "Input"]
+}
+]
+*)
+

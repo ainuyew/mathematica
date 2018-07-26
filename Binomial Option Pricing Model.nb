@@ -1,0 +1,404 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframEngine 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       160,          7]
+NotebookDataLength[     16018,        396]
+NotebookOptionsPosition[     15674,        379]
+NotebookOutlinePosition[     16007,        394]
+CellTagsIndexPosition[     15964,        391]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"singlenode", "[", 
+      RowBox[{"{", 
+       RowBox[{"Vd$_", ",", "Vu$_"}], "}"}], "]"}], ":=", 
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"Vd$", "-", "Vu$"}], 
+        RowBox[{
+         RowBox[{"-", "d"}], "+", "u"}]]}], "-", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"u", " ", "Vd$"}], "-", 
+        RowBox[{"d", " ", "Vu$"}]}], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1", "+", "r"}], ")"}], " ", 
+        RowBox[{"(", 
+         RowBox[{"d", "-", "u"}], ")"}]}]]}]}], ";", 
+    RowBox[{"finalnodes", ":=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Max", "[", 
+           RowBox[{
+            RowBox[{"z", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"S", " ", 
+                  SuperscriptBox["u", "m"]}], ")"}], " ", 
+                SuperscriptBox["d", 
+                 RowBox[{"#1", "-", "m"}]]}], "-", "X"}], ")"}]}], ",", "0"}],
+            "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"m", ",", "0", ",", "#1"}], "}"}]}], "]"}], "&"}], ")"}], "/@", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}]}]}], ";", 
+    RowBox[{
+     RowBox[{"nodes", "[", "l_List", "]"}], ":=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"singlenode", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+             "l", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
+             RowBox[{"l", "\[LeftDoubleBracket]", 
+              RowBox[{"i", "+", "1"}], "\[RightDoubleBracket]"}]}], "}"}], 
+           ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", 
+             RowBox[{
+              RowBox[{"Length", "[", "l", "]"}], "-", "1"}]}], "}"}]}], "]"}],
+          "\[LeftDoubleBracket]", "j", "\[RightDoubleBracket]"}], "]"}], ",", 
+       
+       RowBox[{"{", 
+        RowBox[{"j", ",", 
+         RowBox[{
+          RowBox[{"Length", "[", "l", "]"}], "-", "1"}]}], "}"}]}], "]"}]}], 
+    ";", 
+    RowBox[{
+     RowBox[{"optionrules", "[", "t_", "]"}], ":=", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"2", "\[Rule]", "1"}], ",", 
+        RowBox[{"3", "\[Rule]", "1"}], ",", 
+        RowBox[{"4", "\[Rule]", "2"}], ",", 
+        RowBox[{"5", "\[Rule]", "2"}], ",", 
+        RowBox[{"5", "\[Rule]", "3"}], ",", 
+        RowBox[{"6", "\[Rule]", "3"}], ",", 
+        RowBox[{"7", "\[Rule]", "4"}], ",", 
+        RowBox[{"8", "\[Rule]", "4"}], ",", 
+        RowBox[{"8", "\[Rule]", "5"}], ",", 
+        RowBox[{"9", "\[Rule]", "5"}], ",", 
+        RowBox[{"9", "\[Rule]", "6"}], ",", 
+        RowBox[{"10", "\[Rule]", "6"}], ",", 
+        RowBox[{"11", "\[Rule]", "7"}], ",", 
+        RowBox[{"12", "\[Rule]", "7"}], ",", 
+        RowBox[{"12", "\[Rule]", "8"}], ",", 
+        RowBox[{"13", "\[Rule]", "8"}], ",", 
+        RowBox[{"13", "\[Rule]", "9"}], ",", 
+        RowBox[{"14", "\[Rule]", "9"}], ",", 
+        RowBox[{"14", "\[Rule]", "10"}], ",", 
+        RowBox[{"15", "\[Rule]", "10"}]}], "}"}], "\[LeftDoubleBracket]", 
+      RowBox[{"Range", "[", 
+       RowBox[{"nr", "\[LeftDoubleBracket]", "t", "\[RightDoubleBracket]"}], 
+       "]"}], "\[RightDoubleBracket]"}]}], ";", 
+    RowBox[{"nr", "=", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "6", ",", "12", ",", "20"}], "}"}]}], ";", 
+    RowBox[{"nn", "=", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "6", ",", "10", ",", "15"}], "}"}]}], ";", 
+    RowBox[{"TreePlot", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"optionrules", "[", "t", "]"}], "/.", "\[VeryThinSpace]", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"Range", "[", 
+            RowBox[{
+            "nn", "\[LeftDoubleBracket]", "t", "\[RightDoubleBracket]"}], 
+            "]"}], "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+          "\[Rule]", 
+          RowBox[{"NumberForm", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Flatten", "[", 
+              RowBox[{"Reverse", "[", 
+               RowBox[{"NestList", "[", 
+                RowBox[{"nodes", ",", 
+                 RowBox[{
+                 "finalnodes", "\[LeftDoubleBracket]", "t", 
+                  "\[RightDoubleBracket]"}], ",", "t"}], "]"}], "]"}], "]"}], 
+             "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
+            "4"}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", 
+           RowBox[{
+           "nn", "\[LeftDoubleBracket]", "t", "\[RightDoubleBracket]"}]}], 
+          "}"}]}], "]"}]}], ",", "Left", ",", 
+      RowBox[{"DirectedEdges", "\[Rule]", "True"}], ",", 
+      RowBox[{"VertexLabeling", "\[Rule]", "True"}], ",", 
+      RowBox[{"AspectRatio", "\[Rule]", "0.75"}], ",", 
+      RowBox[{"PlotLabel", "\[Rule]", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Row", "[", 
+          RowBox[{"{", 
+           RowBox[{"\"\<option value = \>\"", ",", 
+            RowBox[{"NumberForm", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Nest", "[", 
+                RowBox[{"nodes", ",", 
+                 RowBox[{
+                 "finalnodes", "\[LeftDoubleBracket]", "t", 
+                  "\[RightDoubleBracket]"}], ",", "t"}], "]"}], 
+               "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+              "4"}], "]"}]}], "}"}], "]"}], ",", "\"\<Label\>\""}], "]"}]}], 
+      ",", 
+      RowBox[{"ImageSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"350", ",", "350"}], "}"}]}]}], "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"t", ",", "1", ",", "\"\<periods\>\""}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}], ",", 
+     RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"u", ",", "1.1", ",", "\"\<up factor\>\""}], "}"}], ",", "1.01",
+      ",", "2", ",", "0.01", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"d", ",", ".91", ",", "\"\<down factor\>\""}], "}"}], ",", 
+     "0.5", ",", "0.99", ",", "0.01", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"r", ",", ".1", ",", "\"\<one-period interest rate\>\""}], 
+      "}"}], ",", "0.01", ",", "0.25", ",", "0.01", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"S", ",", "50", ",", "\"\<initial price of underlying\>\""}], 
+      "}"}], ",", "10", ",", "100", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"X", ",", "50", ",", "\"\<exercise (or strike) price\>\""}], 
+      "}"}], ",", "10", ",", "100", ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"z", ",", "1", ",", "\"\<type of option\>\""}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "\[Rule]", "\"\<call\>\""}], ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "\[Rule]", "\"\<put\>\""}]}], "}"}], ",", 
+     RowBox[{"ControlType", "\[Rule]", "RadioButtonBar"}]}], "}"}], ",", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Left"}], ",", 
+   RowBox[{"TrackedSymbols", "\[RuleDelayed]", 
+    RowBox[{"{", 
+     RowBox[{
+     "t", ",", "u", ",", "d", ",", "r", ",", "S", ",", "X", ",", "z"}], 
+     "}"}]}], ",", 
+   RowBox[{"AutorunSequencing", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "3", ",", "5"}], "}"}]}], ",", 
+   RowBox[{"ControllerLinking", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.7003616500897818`*^9, {3.700362278021941*^9, 3.7003623053091097`*^9}, {
+   3.700362337275859*^9, 3.700362394997406*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`d$$ = 0.91, $CellContext`r$$ = 
+    0.1, $CellContext`S$$ = 50, $CellContext`t$$ = 1, $CellContext`u$$ = 
+    1.1, $CellContext`X$$ = 50, $CellContext`z$$ = 1, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`t$$], 1, "periods"}, {1, 2, 3, 4}}, {{
+       Hold[$CellContext`u$$], 1.1, "up factor"}, 1.01, 2, 0.01}, {{
+       Hold[$CellContext`d$$], 0.91, "down factor"}, 0.5, 0.99, 0.01}, {{
+       Hold[$CellContext`r$$], 0.1, "one-period interest rate"}, 0.01, 0.25, 
+      0.01}, {{
+       Hold[$CellContext`S$$], 50, "initial price of underlying"}, 10, 100}, {{
+       Hold[$CellContext`X$$], 50, "exercise (or strike) price"}, 10, 100}, {{
+      
+       Hold[$CellContext`z$$], 1, "type of option"}, {
+      1 -> "call", -1 -> "put"}}}, Typeset`size$$ = {350., {172., 178.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`t$593$$ = 0, $CellContext`u$594$$ = 
+    0, $CellContext`d$595$$ = 0, $CellContext`r$596$$ = 
+    0, $CellContext`S$597$$ = 0, $CellContext`X$598$$ = 
+    0, $CellContext`z$599$$ = False}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`d$$ = 0.91, $CellContext`r$$ = 
+        0.1, $CellContext`S$$ = 50, $CellContext`t$$ = 1, $CellContext`u$$ = 
+        1.1, $CellContext`X$$ = 50, $CellContext`z$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`t$$, $CellContext`t$593$$, 0], 
+        Hold[$CellContext`u$$, $CellContext`u$594$$, 0], 
+        Hold[$CellContext`d$$, $CellContext`d$595$$, 0], 
+        Hold[$CellContext`r$$, $CellContext`r$596$$, 0], 
+        Hold[$CellContext`S$$, $CellContext`S$597$$, 0], 
+        Hold[$CellContext`X$$, $CellContext`X$598$$, 0], 
+        Hold[$CellContext`z$$, $CellContext`z$599$$, False]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ($CellContext`singlenode[{
+           Pattern[$CellContext`Vd$, 
+            Blank[]], 
+           Pattern[$CellContext`Vu$, 
+            
+            Blank[]]}] := -(($CellContext`Vd$ - \
+$CellContext`Vu$)/(-$CellContext`d$$ + $CellContext`u$$)) - ($CellContext`u$$ \
+$CellContext`Vd$ - $CellContext`d$$ $CellContext`Vu$)/((
+          1 + $CellContext`r$$) ($CellContext`d$$ - $CellContext`u$$)); \
+$CellContext`finalnodes := Map[Table[
+           
+           Max[$CellContext`z$$ (($CellContext`S$$ \
+$CellContext`u$$^$CellContext`m) $CellContext`d$$^(# - $CellContext`m) - \
+$CellContext`X$$), 0], {$CellContext`m, 0, #}]& , {1, 2, 3, 
+          4}]; $CellContext`nodes[
+          Pattern[$CellContext`l, 
+           Blank[List]]] := Table[
+          $CellContext`singlenode[
+           Part[
+            Table[{
+              Part[$CellContext`l, $CellContext`i], 
+              Part[$CellContext`l, $CellContext`i + 1]}, {$CellContext`i, 
+              Length[$CellContext`l] - 1}], $CellContext`j]], {$CellContext`j,
+            Length[$CellContext`l] - 1}]; $CellContext`optionrules[
+          Pattern[$CellContext`t, 
+           Blank[]]] := 
+        Part[{2 -> 1, 3 -> 1, 4 -> 2, 5 -> 2, 5 -> 3, 6 -> 3, 7 -> 4, 8 -> 4, 
+           8 -> 5, 9 -> 5, 9 -> 6, 10 -> 6, 11 -> 7, 12 -> 7, 12 -> 8, 13 -> 
+           8, 13 -> 9, 14 -> 9, 14 -> 10, 15 -> 10}, 
+          Range[
+           Part[$CellContext`nr, $CellContext`t]]]; $CellContext`nr = {2, 6, 
+         12, 20}; $CellContext`nn = {3, 6, 10, 15}; TreePlot[
+         ReplaceAll[
+          $CellContext`optionrules[$CellContext`t$$], 
+          Table[Part[
+             Range[
+              Part[$CellContext`nn, $CellContext`t$$]], $CellContext`i] -> 
+           NumberForm[
+             Part[
+              Flatten[
+               Reverse[
+                NestList[$CellContext`nodes, 
+                 
+                 Part[$CellContext`finalnodes, $CellContext`t$$], \
+$CellContext`t$$]]], $CellContext`i], 4], {$CellContext`i, 
+            Part[$CellContext`nn, $CellContext`t$$]}]], Left, DirectedEdges -> 
+         True, VertexLabeling -> True, AspectRatio -> 0.75, PlotLabel -> Style[
+           Row[{"option value = ", 
+             NumberForm[
+              Part[
+               Nest[$CellContext`nodes, 
+                
+                Part[$CellContext`finalnodes, $CellContext`t$$], \
+$CellContext`t$$], 1], 4]}], "Label"], ImageSize -> {350, 350}]), 
+      "Specifications" :> {{{$CellContext`t$$, 1, "periods"}, {1, 2, 3, 4}, 
+         ControlType -> SetterBar}, {{$CellContext`u$$, 1.1, "up factor"}, 
+         1.01, 2, 0.01, Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`d$$, 0.91, "down factor"}, 0.5, 0.99, 0.01, 
+         Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`r$$, 0.1, "one-period interest rate"}, 0.01, 
+         0.25, 0.01, Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`S$$, 50, "initial price of underlying"}, 10, 
+         100, Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`X$$, 50, "exercise (or strike) price"}, 10, 
+         100, Appearance -> "Labeled", ImageSize -> 
+         Tiny}, {{$CellContext`z$$, 1, "type of option"}, {
+         1 -> "call", -1 -> "put"}, ControlType -> RadioButtonBar}}, 
+      "Options" :> {
+       ControlPlacement -> Left, 
+        TrackedSymbols :> {$CellContext`t$$, $CellContext`u$$, \
+$CellContext`d$$, $CellContext`r$$, $CellContext`S$$, $CellContext`X$$, \
+$CellContext`z$$}, AutorunSequencing -> {1, 3, 5}, ControllerLinking -> True},
+       "DefaultOptions" :> {}],
+     ImageSizeCache->{653., {202., 209.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.700362266582334*^9, 3.7003622856403513`*^9}, 
+   3.7003624035650187`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.700361654710903*^9, 3.7003616547929773`*^9}}]
+},
+WindowSize->{1024, 720},
+WindowMargins->{{280, Automatic}, {-61, 89}},
+FrontEndVersion->"11.0 for Linux ARM (32-bit) (January 17, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[582, 22, 8543, 223, 552, "Input"],
+Cell[9128, 247, 6433, 126, 428, "Output"]
+}, Open  ]],
+Cell[15576, 376, 94, 1, 32, "Input"]
+}
+]
+*)
+

@@ -1,0 +1,152 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='WolframEngine 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       160,          7]
+NotebookDataLength[      5715,        143]
+NotebookOptionsPosition[      5409,        128]
+NotebookOutlinePosition[      5745,        143]
+CellTagsIndexPosition[      5702,        140]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[StyleBox["FX Forward Rates", "Section"]], "Text",
+ CellChangeTimes->{{3.695961410147768*^9, 3.695961415223755*^9}, {
+   3.695961673988913*^9, 3.695961677136159*^9}, {3.695961889906354*^9, 
+   3.695961890897688*^9}, {3.695962492428733*^9, 3.695962492785615*^9}, {
+   3.696045989665225*^9, 3.6960460358814096`*^9}, 3.696047112619124*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"fx", "[", 
+   RowBox[{"spotfx_", ",", " ", "basedf_", ",", " ", "quoteddf_"}], "]"}], 
+  " ", ":=", " ", 
+  RowBox[{"spotfx", 
+   FractionBox["basedf", "quoteddf"]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["df", "USD1w"], ":=", 
+  FractionBox["999899142", "1000000000"]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["df", "USDTN"], ":=", 
+  FractionBox["999978467", "1000000000"]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["df", "JPY1w"], ":=", 
+  FractionBox["1000006836", "1000000000"]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["df", "JPYTN"], ":=", 
+   FractionBox["1000000983", "1000000000"]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["fx", "spot"], ":=", 
+  FractionBox["10682", "100"]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["fx", 
+   RowBox[{"1", "w"}]], ":=", 
+  RowBox[{"fx", "[", 
+   RowBox[{
+    SubscriptBox["fx", "spot"], ",", " ", 
+    FractionBox[
+     SubscriptBox["df", "USD1w"], 
+     SubscriptBox["df", "USDTN"]], ",", " ", 
+    FractionBox[
+     SubscriptBox["df", "JPY1w"], 
+     SubscriptBox["df", "JPYTN"]]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["fx", "TN"], ":=", 
+  RowBox[{"fx", "[", 
+   RowBox[{
+    SubscriptBox["fx", "spot"], ",", " ", 
+    FractionBox[
+     SubscriptBox["df", "USDTN"], 
+     SubscriptBox["df", "USDTN"]], ",", " ", 
+    FractionBox[
+     SubscriptBox["df", "JPYTN"], 
+     SubscriptBox["df", "JPYTN"]]}], "]"}]}], "\[IndentingNewLine]"}], "Input",\
+
+ CellChangeTimes->{{3.6959611377990313`*^9, 3.6959612572289457`*^9}, {
+   3.695961295275317*^9, 3.695961526825732*^9}, {3.695961563243593*^9, 
+   3.695961592889668*^9}, {3.695961908862871*^9, 3.6959619190558443`*^9}, {
+   3.6959619611642933`*^9, 3.695961962859057*^9}, {3.6959625200853453`*^9, 
+   3.69596260429666*^9}, {3.6959627103058043`*^9, 3.6959627881259747`*^9}, {
+   3.6959628660285397`*^9, 3.695962907683961*^9}, {3.6959639281403713`*^9, 
+   3.6959639878951273`*^9}, {3.695964027170598*^9, 3.695964226875844*^9}, {
+   3.695964917097208*^9, 3.695965062833436*^9}, {3.69604354603545*^9, 
+   3.696043552916442*^9}, {3.696043771629991*^9, 3.6960437806528597`*^9}, {
+   3.6960438805660677`*^9, 3.696043905197466*^9}, {3.696044046130081*^9, 
+   3.69604409375955*^9}, {3.69604418349765*^9, 3.69604434918757*^9}, {
+   3.696044421860532*^9, 3.696044481294385*^9}, {3.69604460559134*^9, 
+   3.696044688527297*^9}, {3.696045071603305*^9, 3.696045084371509*^9}, 
+   3.696046004273271*^9, 3.696046047139957*^9, {3.6960461581268187`*^9, 
+   3.696046190436881*^9}, {3.696046223353396*^9, 3.696046307780272*^9}, {
+   3.69604637719316*^9, 3.6960464191029882`*^9}, {3.6960464572972927`*^9, 
+   3.6960464728448133`*^9}, {3.6960467003397293`*^9, 3.696046709715171*^9}, 
+   3.696046787298389*^9, {3.6960468657613277`*^9, 3.696046881014681*^9}, {
+   3.696047149925074*^9, 3.696047274278638*^9}, {3.6960480677143383`*^9, 
+   3.696048084298625*^9}, {3.696048330302507*^9, 3.696048357494994*^9}, {
+   3.696048416294457*^9, 3.696048502021408*^9}, {3.696048944716361*^9, 
+   3.696048946013754*^9}, {3.69604925411196*^9, 3.6960492716399193`*^9}, {
+   3.696053678443193*^9, 3.696053683887603*^9}, {3.6960541128491697`*^9, 
+   3.696054122723773*^9}, 3.69605420920364*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"y", "[", 
+    RowBox[{
+    "x0_", ",", " ", "x1_", ",", " ", "x2_", ",", " ", "y0_", ",", " ", 
+     "y2_"}], "]"}], ":=", 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{
+     FractionBox[
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Log", "[", "y2", "]"}], "-", 
+         RowBox[{"Log", "[", "y0", "]"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{"x1", "-", "x0"}], ")"}]}], 
+      RowBox[{"x2", "-", "x0"}]], "+", 
+     RowBox[{"Log", "[", "y0", "]"}]}]]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.6960491575514297`*^9, 3.696049157567477*^9}, {
+   3.696054292914178*^9, 3.696054394989871*^9}, {3.696054448620714*^9, 
+   3.696054450483671*^9}, {3.696054483795417*^9, 3.696054506959464*^9}, {
+   3.69605533066432*^9, 3.696055335358382*^9}, {3.6960554015979967`*^9, 
+   3.6960554025474253`*^9}, {3.696201473129961*^9, 3.696201513207741*^9}, {
+   3.696201676870084*^9, 3.696201807766246*^9}, {3.696202604993889*^9, 
+   3.6962026494242897`*^9}, {3.69628912544978*^9, 3.696289134359352*^9}, {
+   3.696290824459796*^9, 3.6962909985740757`*^9}, 3.696291332140676*^9}]
+},
+WindowSize->{734, 779},
+WindowMargins->{{25, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Linux ARM (32-bit) (January 18, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[560, 20, 349, 4, 47, "Text"],
+Cell[912, 26, 3304, 71, 545, "Input"],
+Cell[4219, 99, 1186, 27, 87, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
